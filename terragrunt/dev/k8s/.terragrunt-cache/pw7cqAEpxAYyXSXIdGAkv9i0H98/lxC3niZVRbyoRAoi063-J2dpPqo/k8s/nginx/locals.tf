@@ -1,4 +1,4 @@
 locals {
   application_name = "nginx"
-  service_port     = 5050
+  service_port     = 80
 }

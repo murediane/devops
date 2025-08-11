@@ -31,13 +31,13 @@ resource "kubernetes_deployment" "url_shortener" {
           image = "aria3ppp/url-shortener"
 
           port {
-            container_port = 5432
+            container_port = 6060
           }
 
           # envs
           env {
             name  = "SERVER_PORT"
-            value = local.service_port
+            value = local.app_port
           }
           env {
             name  = "POSTGRES_USER"
@@ -68,7 +68,7 @@ resource "kubernetes_deployment" "url_shortener" {
           liveness_probe {
             http_get {
               path = "/test/redirection-destination"
-              port = local.service_port
+              port = local.app_port
             }
             initial_delay_seconds = 20
             period_seconds        = 10
@@ -80,7 +80,7 @@ resource "kubernetes_deployment" "url_shortener" {
           readiness_probe {
             http_get {
               path = "/test/redirection-destination"
-              port = local.service_port
+              port = local.app_port
             }
             initial_delay_seconds = 5
             period_seconds        = 5
@@ -113,7 +113,8 @@ resource "kubernetes_service" "url_shortener" {
     type = "NodePort"
     port {
       port        = local.service_port
-      target_port = local.service_port
+      target_port = local.app_port
+      node_port   = var.node_port
     }
   }
 }

@@ -7,8 +7,8 @@ locals {
 }
 
 terraform {
-  # go up two levels from terragrunt/dev to repo root, then into terraform, then subdir k8s
-  source = "${abspath("${get_terragrunt_dir()}/../../terraform")}//k8s"
+  # go up three levels from terragrunt/dev/k8s to repo root, then into terraform, then subdir k8s
+  source = "${abspath("${get_terragrunt_dir()}/../../../terraform")}//k8s"
 }
 
 
@@ -16,8 +16,12 @@ inputs = {
   stage = local.stage
 
   replica_count               = 2
-  postgres_replica_count      = 1
+  postgres_replica_count      = 3
   postgres_storage_size_in_gb = 1
+
+  # NodePort configuration for dev environment
+  nginx_node_port         = 30201
+  url_shortener_node_port = 30301
 
   postgres_database           = "db"
   postgres_username           = "postgres"

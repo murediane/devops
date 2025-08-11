@@ -7,5 +7,6 @@ locals {
   kubernetes_postgres_secret_name         = "postgres-secret"
   kubernetes_postgres_secret_password_key = "password"
 
-  service_port = 6060
+  app_port     = 6060  # Port the app runs on internally
+  service_port = 8080  # Port the service exposes
 }

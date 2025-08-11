@@ -70,6 +70,7 @@ module "nginx" {
   source = "./nginx"
 
   replica_count = var.replica_count
+  node_port     = var.nginx_node_port
 
   namespace = kubernetes_namespace.namespace.metadata[0].name
 
@@ -81,6 +82,7 @@ module "url_shortener" {
   stage  = var.stage
 
   replica_count = var.replica_count
+  node_port     = var.url_shortener_node_port
 
   namespace = kubernetes_namespace.namespace.metadata[0].name
 

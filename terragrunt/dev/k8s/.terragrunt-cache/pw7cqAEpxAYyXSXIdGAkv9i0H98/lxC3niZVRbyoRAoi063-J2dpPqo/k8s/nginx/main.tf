@@ -26,7 +26,7 @@ resource "kubernetes_deployment" "nginx" {
           name  = "${local.application_name}-container"
 
           port {
-            container_port = 90
+            container_port = 80
           }
 
           resources {
@@ -58,6 +58,7 @@ resource "kubernetes_service" "nginx" {
     port {
       port        = local.service_port
       target_port = local.service_port
+      node_port   = var.node_port
     }
   }
 }

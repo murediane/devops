@@ -10,3 +10,9 @@ variable "namespace" {
   type        = string
   description = "Namespace, in which the application is deployed"
 }
+
+variable "node_port" {
+  type        = number
+  description = "NodePort for external access"
+  default     = null
+}

@@ -76,3 +76,15 @@ variable "postgres_storage_size_in_gb" {
     error_message = "minimum postgres storage size in giga byte is 0.5"
   }
 }
+
+variable "nginx_node_port" {
+  type        = number
+  description = "NodePort for nginx service external access"
+  default     = null
+}
+
+variable "url_shortener_node_port" {
+  type        = number
+  description = "NodePort for URL shortener service external access"  
+  default     = null
+}
