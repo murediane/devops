@@ -1,2 +1,38 @@
 *.pdf
 *.DS_Store
+.terragrunt-cache
+.terraform.lock.hcl
+.terraform
+
+# Terraform state files
+*.tfstate
+*.tfstate.backup
+*.tfstate.*.backup
+
+# Terragrunt generated files
+terragrunt/provider.tf
+terragrunt/.terraform.lock.hcl
+terragrunt/.terraform/
+
+# Environment-specific state files
+terragrunt/dev/k8s/.terraform/
+terragrunt/dev/k8s/.terraform.lock.hcl
+terragrunt/prod/k8s/.terraform/
+terragrunt/prod/k8s/.terraform.lock.hcl
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
